@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+const TalkingBot = {
+    name: 'RoboTalker',
+    speak() {
+        const utterance = new SpeechSynthesisUtterance(document.getElementById('thing').value);
+        window.speechSynthesis.speak(utterance);
+    },
+};
+
+
+</script>
+</head>
+<body>
+<h1>name practicer</h1>
+<input type='text' id = 'thing'>
+<button onclick="TalkingBot.speak();">speak</button>
+
+
+</body>
+</html> 
