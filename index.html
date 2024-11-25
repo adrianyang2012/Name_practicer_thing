@@ -1,23 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<script>
-const TalkingBot = {
-    name: 'RoboTalker',
-    speak() {
-        const utterance = new SpeechSynthesisUtterance(document.getElementById('thing').value);
-        window.speechSynthesis.speak(utterance);
-    },
-};
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboTalker - Text to Speech</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+            text-align: center;
+        }
 
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
 
-</script>
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        #thing {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-<h1>name practicer</h1>
-<input type='text' id = 'thing'>
-<button onclick="TalkingBot.speak();">speak</button>
+    <div class="container">
+        <h1>RoboTalker</h1>
+        <input type='text' id='thing' placeholder="Type something to speak">
+        <button onclick="TalkingBot.speak();">Speak</button>
+    </div>
 
-
+    <script>
+    const TalkingBot = {
+        name: 'RoboTalker',
+        speak() {
+            const inputElement = document.getElementById('thing');
+            const message = inputElement.value.trim();
+            
+            if (message) {
+                const utterance = new SpeechSynthesisUtterance(message);
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Please enter text to speak');
+            }
+        },
+    };
+    </script>
 </body>
-</html> 
+</html>
